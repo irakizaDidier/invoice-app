@@ -2,3 +2,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.dark-mode {
+  background-color: #141625;
+  color: white;
+}
+body.dark-mode .navbar-top {
+  background-color: #1e2139;
+  color: #ffffff;
+}
+body.dark-mode .navbar-desktop {
+  background-color: #1e2139;
+  color: #ffffff;
+}

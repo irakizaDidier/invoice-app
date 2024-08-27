@@ -1,0 +1,32 @@
+.navbar {
+  @apply flex flex-col;
+}
+
+.navbar-desktop {
+  @apply hidden lg:flex fixed top-0 left-0 h-screen  shadow-lg flex-col items-start;
+  background-color: #373b53;
+}
+
+.navbar-top {
+  @apply flex lg:hidden justify-between shadow-lg;
+  background-color: #373b53;
+}
+
+.logo-image {
+  @apply w-7 h-7;
+}
+
+.actions {
+  @apply flex flex-col;
+}
+
+.btn-theme {
+  @apply text-gray-700 hover:text-purple-700 transition-colors;
+}
+
+.avatar {
+  @apply w-6 h-6 rounded-full;
+}
+.top {
+  @apply w-full flex justify-center;
+}
