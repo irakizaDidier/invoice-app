@@ -1,0 +1,3 @@
+.home-container {
+  @apply lg:ml-20 flex flex-col justify-center items-center content-center min-h-screen;
+}

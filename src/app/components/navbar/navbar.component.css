@@ -3,7 +3,7 @@
 }
 
 .navbar-desktop {
-  @apply hidden lg:flex fixed top-0 left-0 h-screen  shadow-lg flex-col items-start;
+  @apply hidden lg:flex fixed top-0 left-0 h-screen  shadow-lg flex-col items-start rounded-r-2xl;
   background-color: #373b53;
 }
 
@@ -28,5 +28,10 @@
   @apply w-6 h-6 rounded-full;
 }
 .top {
-  @apply w-full flex justify-center;
+  @apply w-full flex justify-center rounded-r-2xl;
+  background: linear-gradient(0deg, #7e88c3 50%, #7c5dfa 50%);
+}
+.top-phone {
+  @apply px-3 rounded-r-2xl md:px-6 md:rounded-r-3xl;
+  background: linear-gradient(0deg, #7e88c3 50%, #7c5dfa 50%);
 }
