@@ -19,7 +19,6 @@ export class NavbarComponent {
   }
 
   toggleTheme() {
-    console.log('Toggling theme');
     this.store.dispatch(ThemeActions.toggleTheme());
   }
 }

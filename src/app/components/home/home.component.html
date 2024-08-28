@@ -1,18 +1,34 @@
-<div class="lg:mx-52 md:mx-16 sm:mx-10">
-  <app-create-invoice class="px-64"></app-create-invoice>
-</div>
-<div
-  class="home-container">
+<div class="home-container">
+  <ng-container *ngIf="invoices$ | async as invoices">
+    <div *ngIf="invoices.length > 0" class="lg:mx-52 md:mx-16 sm:mx-10">
+      <app-create-invoice class="px-64"></app-create-invoice>
 
-  <img src="/assets/images/illustration-empty.svg"
-    class="md:w-80 md:h-72 lg:w-64 lg:h-52">
-  <h3 class="font-bold text-2xl p-3 md:text-3xl lg:text-xl">There is nothing
-    here</h3>
-  <section class="flex flex-col">
-    <p class="md:text-xl lg:text-sm">
-      Create an invoice by clicking the
-      <br>
-      <span> New Invoice button and get </span>
-    </p>
-  </section>
+      <div *ngFor="let invoice of invoices" class="invoice-item-container">
+        <div class="invoice-item">
+
+          <p class="invoice-id">#{{ invoice.id }}</p>
+          <p class="invoice-due-date">Due {{ invoice.paymentDue | date:
+            'dd MMM yyyy' }}</p>
+          <p class="invoice-client-name">{{ invoice.clientName }}</p>
+
+          <p class="invoice-total-amount">{{ invoice.total |
+            currency:'GBP':'symbol' }}</p>
+          <p [ngClass]="{
+              'status-paid': invoice.status === 'Paid',
+              'status-pending': invoice.status === 'Pending',
+              'status-draft': invoice.status === 'Draft'
+            }">
+            {{ invoice.status }}
+          </p>
+          <p class="invoice-arrow">&gt;</p>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="error$ | async as error">
+    <div class="error-message">
+      {{ error }}
+    </div>
+  </ng-container>
 </div>

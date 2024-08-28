@@ -1,3 +1,40 @@
 .home-container {
-  @apply lg:ml-20 flex flex-col justify-center items-center content-center min-h-screen;
+  @apply min-h-screen;
+}
+
+.invoice-item-container {
+  @apply bg-white p-4 rounded-lg shadow-md mb-4 flex justify-between items-center;
+}
+
+.invoice-item {
+  @apply flex justify-between w-full;
+}
+
+.invoice-id {
+  @apply font-bold text-lg text-black;
+}
+
+.invoice-due-date,
+.invoice-client-name {
+  @apply text-gray-500 text-sm;
+}
+
+.invoice-total-amount {
+  @apply font-bold text-xl text-black;
+}
+
+.status-paid {
+  @apply bg-green-100 text-green-600 font-semibold rounded-md px-4 py-2 flex items-center;
+}
+
+.status-pending {
+  @apply bg-yellow-100 text-yellow-600 font-semibold rounded-md px-4 py-2 flex items-center;
+}
+
+.status-draft {
+  @apply bg-gray-100 text-gray-600 font-semibold rounded-md px-4 py-2 flex items-center;
+}
+
+.invoice-arrow {
+  @apply text-gray-400 text-lg;
 }
