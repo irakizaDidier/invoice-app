@@ -3,7 +3,7 @@
 }
 
 .invoice-item-container {
-  @apply bg-white p-4 rounded-lg shadow-md mb-4 flex justify-between items-center;
+  @apply bg-white p-4 rounded-lg shadow-md mb-4 flex justify-between items-start;
 }
 
 .invoice-item {
@@ -16,25 +16,49 @@
 
 .invoice-due-date,
 .invoice-client-name {
-  @apply text-gray-500 text-sm;
+  @apply text-sm flex justify-start text-center;
+  color: #7e88c3;
 }
 
 .invoice-total-amount {
   @apply font-bold text-xl text-black;
 }
 
+.invoice-arrow {
+  @apply text-xl font-bold px-3;
+  color: #7e88c3;
+}
+
 .status-paid {
-  @apply bg-green-100 text-green-600 font-semibold rounded-md px-4 py-2 flex items-center;
+  @apply bg-green-100  font-semibold rounded-md px-4 py-2 flex;
+  color: #33d69f;
+  background-color: #f3fdfa;
 }
 
 .status-pending {
-  @apply bg-yellow-100 text-yellow-600 font-semibold rounded-md px-4 py-2 flex items-center;
+  @apply bg-yellow-100 font-semibold rounded-md px-4 py-2 flex items-center;
+  color: #ff8f00;
+  background-color: #fff9f0;
 }
 
 .status-draft {
-  @apply bg-gray-100 text-gray-600 font-semibold rounded-md px-4 py-2 flex items-center;
+  @apply font-semibold rounded-md px-4 py-2 flex items-center;
+  color: #373b53;
+  background-color: #f4f4f5;
+}
+.status-paid,
+.status-pending,
+.status-draft {
+  @apply w-28;
 }
 
-.invoice-arrow {
-  @apply text-gray-400 text-lg;
+.status-text {
+  @apply inline-flex items-center;
+}
+
+.dot {
+  @apply inline-block w-3 h-3 bg-current rounded-full mr-1.5;
+}
+.invoicehash {
+  color: #7e88c3;
 }

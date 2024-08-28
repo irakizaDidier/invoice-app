@@ -16,6 +16,7 @@ import { environment } from '../environment/environment';
 import { themeReducer } from './store/reducers/theme.reducer';
 import { invoiceReducer } from './store/reducers/invoice.reducer';
 import { InvoiceEffects } from './store/effects/invoice.effects';
+import { CapitalizePipe } from './Pipes/capitalize.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { InvoiceEffects } from './store/effects/invoice.effects';
     NavbarComponent,
     HomeComponent,
     CreateInvoiceComponent,
+    CapitalizePipe,
   ],
   imports: [
     BrowserModule,

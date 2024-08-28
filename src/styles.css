@@ -15,3 +15,42 @@ body.dark-mode .navbar-desktop {
   background-color: #1e2139;
   color: #ffffff;
 }
+body.dark-mode .invoice-item-container {
+  background-color: #1e2139;
+  color: white;
+}
+body.dark-mode .invoice-id {
+  color: white;
+}
+body.dark-mode .invoice-due-date {
+  color: #dfe3fa;
+}
+body.dark-mode .invoice-client-name {
+  color: #dfe3fa;
+}
+body.dark-mode .invoice-total-amount {
+  color: white;
+}
+body.dark-mode .status-paid {
+  background-color: #1f2b3f;
+}
+body.dark-mode .status-pending {
+  background-color: #2b2736;
+}
+body.dark-mode .status-draft {
+  background-color: #292c44;
+  color: #dfe3fa;
+}
+body.dark-mode .filter {
+  color: white;
+}
+body.dark-mode .drop {
+  background-color: #252945;
+  border: none;
+}
+body.dark-mode .custom-checkbox {
+  color: white;
+}
+body.dark-mode .checkbox-custom {
+  background-color: #1e2139;
+}

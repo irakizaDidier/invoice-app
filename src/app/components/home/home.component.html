@@ -1,24 +1,26 @@
 <div class="home-container">
-  <ng-container *ngIf="invoices$ | async as invoices">
+  <ng-container *ngIf="filteredInvoices$ | async as invoices">
     <div *ngIf="invoices.length > 0" class="lg:mx-52 md:mx-16 sm:mx-10">
-      <app-create-invoice class="px-64"></app-create-invoice>
+      <app-create-invoice (filteredInvoices)="onFilterApplied($event)"
+        class="px-64"></app-create-invoice>
 
       <div *ngFor="let invoice of invoices" class="invoice-item-container">
         <div class="invoice-item">
-
-          <p class="invoice-id">#{{ invoice.id }}</p>
-          <p class="invoice-due-date">Due {{ invoice.paymentDue | date:
-            'dd MMM yyyy' }}</p>
+          <p class="invoice-id"><span class="invoicehash">#</span>{{ invoice.id
+            }}</p>
+          <p class="invoice-due-date">Due {{ invoice.paymentDue |
+            date:'dd MMM yyyy' }}</p>
           <p class="invoice-client-name">{{ invoice.clientName }}</p>
-
           <p class="invoice-total-amount">{{ invoice.total |
             currency:'GBP':'symbol' }}</p>
           <p [ngClass]="{
-              'status-paid': invoice.status === 'Paid',
-              'status-pending': invoice.status === 'Pending',
-              'status-draft': invoice.status === 'Draft'
+              'status-paid': invoice.status === 'paid',
+              'status-pending': invoice.status === 'pending',
+              'status-draft': invoice.status === 'draft'
             }">
-            {{ invoice.status }}
+            <span class="status-text">
+              <span class="dot"></span> {{ invoice.status | capitalize }}
+            </span>
           </p>
           <p class="invoice-arrow">&gt;</p>
         </div>

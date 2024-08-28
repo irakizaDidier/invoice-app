@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { loadInvoices } from '../../store/actions/invoice.actions';
 import {
   selectAllInvoices,
@@ -15,14 +15,20 @@ import { Invoice } from '../../models/invoice.model';
 })
 export class HomeComponent implements OnInit {
   invoices$: Observable<Invoice[]>;
+  filteredInvoices$: Observable<Invoice[]>;
   error$: Observable<string | null>;
 
   constructor(private store: Store) {
     this.invoices$ = this.store.select(selectAllInvoices);
+    this.filteredInvoices$ = this.invoices$;
     this.error$ = this.store.select(selectInvoiceError);
   }
 
   ngOnInit(): void {
     this.store.dispatch(loadInvoices());
+  }
+
+  onFilterApplied(filteredInvoices: Invoice[]) {
+    this.filteredInvoices$ = of(filteredInvoices);
   }
 }
