@@ -11,6 +11,7 @@ import { Invoice } from '../../models/invoice.model';
 })
 export class CreateInvoiceComponent {
   dropdownOpen = false;
+  isModalOpen = false;
   filters = {
     paid: false,
     pending: false,
@@ -58,5 +59,12 @@ export class CreateInvoiceComponent {
       .subscribe((filteredInvoices) => {
         this.filteredInvoices.emit(filteredInvoices);
       });
+  }
+  openModal() {
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
   }
 }

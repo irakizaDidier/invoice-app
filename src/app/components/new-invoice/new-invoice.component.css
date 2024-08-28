@@ -1,0 +1,93 @@
+.invoice-form {
+  max-width: 450px;
+  padding: 30px;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.section-title {
+  margin-bottom: 15px;
+  color: #7c5dfa;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #888;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.add-item-btn {
+  display: block;
+  margin: 15px 0;
+  padding: 10px 20px;
+  border: none;
+  background-color: #f8f8f8;
+  color: #7c5dfa;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.add-item-btn:hover {
+  background-color: #e6e6e6;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary {
+  background-color: #7c5dfa;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #5a3ec8;
+}
+
+.btn-secondary {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background-color: #e0e0e0;
+}

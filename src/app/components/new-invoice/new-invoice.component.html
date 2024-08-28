@@ -1,0 +1,99 @@
+<div class="invoice-form">
+  <h2 class="text-black">New Invoice</h2>
+
+  <!-- Bill From Section -->
+  <div class="section">
+    <h3 class="section-title">Bill From</h3>
+    <div class="form-group">
+      <label for="streetAddress">Street Address</label>
+      <input type="text" id="streetAddress" placeholder="Street Address" />
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" id="city" placeholder="City" />
+      </div>
+      <div class="form-group">
+        <label for="postCode">Post Code</label>
+        <input type="text" id="postCode" placeholder="Post Code" />
+      </div>
+      <div class="form-group">
+        <label for="country">Country</label>
+        <input type="text" id="country" placeholder="Country" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Bill To Section -->
+  <div class="section">
+    <h3 class="section-title">Bill To</h3>
+    <div class="form-group">
+      <label for="clientName">Client's Name</label>
+      <input type="text" id="clientName" placeholder="Client's Name" />
+    </div>
+    <div class="form-group">
+      <label for="clientEmail">Client's Email</label>
+      <input type="email" id="clientEmail"
+        placeholder="e.g. email@example.com" />
+    </div>
+    <div class="form-group">
+      <label for="clientStreetAddress">Street Address</label>
+      <input type="text" id="clientStreetAddress"
+        placeholder="Street Address" />
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="clientCity">City</label>
+        <input type="text" id="clientCity" placeholder="City" />
+      </div>
+      <div class="form-group">
+        <label for="clientPostCode">Post Code</label>
+        <input type="text" id="clientPostCode" placeholder="Post Code" />
+      </div>
+      <div class="form-group">
+        <label for="clientCountry">Country</label>
+        <input type="text" id="clientCountry" placeholder="Country" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Invoice Details Section -->
+  <div class="section">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="invoiceDate">Invoice Date</label>
+        <input type="date" id="invoiceDate" />
+      </div>
+      <div class="form-group">
+        <label for="paymentTerms">Payment Terms</label>
+        <select id="paymentTerms">
+          <option>Net 1 Day</option>
+          <option>Net 7 Days</option>
+          <option>Net 14 Days</option>
+          <option>Net 30 Days</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="projectDescription">Project Description</label>
+      <input type="text" id="projectDescription"
+        placeholder="e.g. Graphic Design Service" />
+    </div>
+  </div>
+
+  <!-- Item List Section -->
+  <div class="section">
+    <h3 class="section-title">Item List</h3>
+    <div class="item-list">
+      <!-- Item List will be dynamically generated -->
+    </div>
+  </div>
+  <button (click)="addItem()" class="add-item-btn">+ Add New Item</button>
+
+  <!-- Buttons -->
+  <div class="buttons">
+    <button class="btn btn-secondary">Discard</button>
+    <button class="btn btn-primary">Save as Draft</button>
+    <button class="btn btn-primary">Save & Send</button>
+  </div>
+</div>

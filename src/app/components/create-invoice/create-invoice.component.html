@@ -61,24 +61,29 @@
       </div>
     </div>
 
-    <button
-      class="flex items-center create text-white py-2 px-4 rounded-full">
-      <div
-        class="bg-white create-icon rounded-full w-8 h-8 flex items-center justify-center mr-2">
-        <svg
-          class="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 4v16m8-8H4"></path>
-        </svg>
+    <section class="flex justify-between items-center top">
+      <div class="flex items-center space-x-4">
+        <button
+          class="flex items-center create text-white py-2 px-4 rounded-full"
+          (click)="openModal()">
+          <div
+            class="bg-white create-icon rounded-full w-8 h-8 flex items-center justify-center mr-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="2" d="M12 4v16m8-8H4"></path>
+            </svg>
+          </div>
+          <span>New Invoice</span>
+        </button>
       </div>
-      <span>New Invoice</span>
-    </button>
+    </section>
+
+    <div class="modal-overlay" *ngIf="isModalOpen" (click)="closeModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <app-new-invoice></app-new-invoice>
+        <button class="close-modal" (click)="closeModal()">X</button>
+      </div>
+    </div>
   </div>
 </section>

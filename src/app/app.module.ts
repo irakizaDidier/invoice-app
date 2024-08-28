@@ -17,6 +17,7 @@ import { themeReducer } from './store/reducers/theme.reducer';
 import { invoiceReducer } from './store/reducers/invoice.reducer';
 import { InvoiceEffects } from './store/effects/invoice.effects';
 import { CapitalizePipe } from './Pipes/capitalize.pipe';
+import { NewInvoiceComponent } from './components/new-invoice/new-invoice.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { CapitalizePipe } from './Pipes/capitalize.pipe';
     HomeComponent,
     CreateInvoiceComponent,
     CapitalizePipe,
+    NewInvoiceComponent,
   ],
   imports: [
     BrowserModule,
