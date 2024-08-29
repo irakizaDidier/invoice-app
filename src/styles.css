@@ -54,3 +54,68 @@ body.dark-mode .custom-checkbox {
 body.dark-mode .checkbox-custom {
   background-color: #1e2139;
 }
+body.dark-mode .invoice-form {
+  background-color: #141625;
+}
+body.dark-mode #country {
+  background-color: #1e2139;
+  border: none;
+}
+body.dark-mode #streetAddress {
+  background-color: #1e2139;
+  border: none;
+}
+body.dark-mode #city {
+  background-color: #1e2139;
+  border: none;
+}
+body.dark-mode #postCode {
+  background-color: #1e2139;
+  border: none;
+}
+body.dark-mode #clientName {
+  background-color: #1e2139;
+  border: none;
+}
+body.dark-mode #clientEmail {
+  background-color: #1e2139;
+  border: none;
+}
+body.dark-mode #clientStreetAddress {
+  background-color: #1e2139;
+  border: none;
+}
+body.dark-mode #clientCity {
+  background-color: #1e2139;
+  border: none;
+}
+body.dark-mode #clientPostCode {
+  background-color: #1e2139;
+  border: none;
+}
+body.dark-mode #clientCountry {
+  background-color: #1e2139;
+  border: none;
+}
+body.dark-mode #invoiceDate {
+  background-color: #1e2139;
+  border: none;
+  color: #898a92;
+}
+body.dark-mode #paymentTerms {
+  background-color: #1e2139;
+  border: none;
+  color: #fff;
+}
+body.dark-mode #projectDescription {
+  background-color: #1e2139;
+  border: none;
+}
+body.dark-mode .add-item-btn {
+  background-color: #1e2139;
+  border: none;
+  color: #dfe3fa;
+}
+body.dark-mode .new-title {
+  color: #fff;
+}

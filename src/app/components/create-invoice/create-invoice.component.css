@@ -64,27 +64,71 @@ input[type="checkbox"].hidden:checked + .checkbox-custom::after {
   align-items: flex-start;
   justify-content: flex-start;
   z-index: 1000;
+  overflow: hidden;
 }
 
 .modal-content {
-  /* background-color: white; */
-  /* border-radius: 8px; */
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
   position: relative;
-  overflow-y: auto;
   max-height: 100%;
+  overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  transform: translateX(-100%);
+  animation: slideIn 3s forwards;
 }
 
 .modal-content::-webkit-scrollbar {
   display: none;
 }
 
+.modal-content {
+  position: relative;
+  max-height: 100%;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  transform: translateX(-100%);
+  animation: slideInSmall 3s forwards;
+}
+
+.modal-content::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes slideInSmall {
+  0% {
+    transform: translateX(-100%);
+  }
+  90% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@media (min-width: 1024px) {
+  @keyframes slideInLarge {
+    0% {
+      transform: translateX(-100%);
+    }
+    90% {
+      transform: translateX(13.2%);
+    }
+    100% {
+      transform: translateX(13.2%);
+    }
+  }
+
+  .modal-content {
+    animation: slideInLarge 3s forwards;
+  }
+}
+
 .close-modal {
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 90%;
   background-color: #f0f0f0;
   border: none;
   border-radius: 50%;

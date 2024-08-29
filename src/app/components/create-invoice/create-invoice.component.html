@@ -5,12 +5,12 @@
       invoices</p>
   </div>
 
-  <div class="flex items-center space-x-4">
+  <div class="flex items-center">
     <div class="relative">
       <button
         class="filter flex items-center space-x-2 text-black font-medium"
         (click)="toggleDropdown()">
-        <span>Filter by status</span>
+        <span>Filter<span class> by status</span></span>
         <svg
           class="w-4 h-4 create-icon"
           fill="none"
@@ -61,7 +61,7 @@
       </div>
     </div>
 
-    <section class="flex justify-between items-center top">
+    <section class="flex justify-between items-center ">
       <div class="flex items-center space-x-4">
         <button
           class="flex items-center create text-white py-2 px-4 rounded-full"
@@ -82,7 +82,8 @@
     <div class="modal-overlay" *ngIf="isModalOpen" (click)="closeModal()">
       <div class="modal-content" (click)="$event.stopPropagation()">
         <app-new-invoice></app-new-invoice>
-        <button class="close-modal" (click)="closeModal()">X</button>
+        <button class="close-modal lg:hidden md:hidden sm:visible"
+          (click)="closeModal()">X</button>
       </div>
     </div>
   </div>

@@ -1,7 +1,7 @@
 .invoice-form {
-  max-width: 450px;
+  @apply rounded-r-3xl;
+  max-width: 550px;
   padding: 30px;
-  border-radius: 8px;
   background-color: #ffffff;
 }
 
@@ -45,6 +45,7 @@
 }
 
 .add-item-btn {
+  @apply rounded-full;
   display: block;
   margin: 15px 0;
   padding: 10px 20px;
@@ -52,12 +53,7 @@
   background-color: #f8f8f8;
   color: #7c5dfa;
   cursor: pointer;
-  border-radius: 5px;
   width: 100%;
-}
-
-.add-item-btn:hover {
-  background-color: #e6e6e6;
 }
 
 .buttons {
@@ -67,27 +63,22 @@
 }
 
 .btn {
-  padding: 12px 20px;
+  @apply rounded-full px-3 py-2 text-sm;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .btn-primary {
-  background-color: #7c5dfa;
+  background-color: #373b53;
   color: #fff;
 }
 
-.btn-primary:hover {
-  background-color: #5a3ec8;
-}
-
 .btn-secondary {
-  background-color: #f0f0f0;
+  background-color: #f9fafe;
   color: #333;
 }
-
-.btn-secondary:hover {
-  background-color: #e0e0e0;
+.btn-primary-save {
+  background-color: #7c5dfa;
+  color: #fff;
 }
