@@ -1,0 +1,28 @@
+.btn-edit {
+  @apply px-4 py-2 rounded-lg bg-blue-100 text-blue-700 hover:bg-blue-200;
+}
+
+.btn-delete {
+  @apply px-4 py-2 rounded-lg bg-red-100 text-red-700 hover:bg-red-200;
+}
+
+.btn-paid {
+  @apply px-4 py-2 rounded-lg bg-purple-100 text-purple-700 hover:bg-purple-200;
+}
+.status-paid {
+  @apply bg-green-100  font-semibold rounded-md px-4 py-2 flex;
+  color: #33d69f;
+  background-color: #f3fdfa;
+}
+
+.status-pending {
+  @apply bg-yellow-100 font-semibold rounded-md px-4 py-2 flex items-center;
+  color: #ff8f00;
+  background-color: #fff9f0;
+}
+
+.status-draft {
+  @apply font-semibold rounded-md px-4 py-2 flex items-center;
+  color: #373b53;
+  background-color: #f4f4f5;
+}

@@ -12,3 +12,18 @@ export const loadInvoicesFailure = createAction(
   '[Invoice] Load Invoices Failure',
   props<{ error: string }>()
 );
+
+export const saveInvoice = createAction(
+  '[Invoice] Save Invoice',
+  props<{ invoice: Invoice }>()
+);
+
+export const saveInvoiceSuccess = createAction(
+  '[Invoice] Save Invoice Success',
+  props<{ invoice: Invoice }>()
+);
+
+export const saveInvoiceFailure = createAction(
+  '[Invoice] Save Invoice Failure',
+  props<{ error: string }>()
+);

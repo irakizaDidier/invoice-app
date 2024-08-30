@@ -7,7 +7,7 @@ import {
   selectInvoiceError,
 } from '../../store/selectors/invoice.selectors';
 import { Invoice } from '../../models/invoice.model';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   filteredInvoices$: Observable<Invoice[]>;
   error$: Observable<string | null>;
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private router: Router) {
     this.invoices$ = this.store.select(selectAllInvoices);
     this.filteredInvoices$ = this.invoices$;
     this.error$ = this.store.select(selectInvoiceError);
@@ -30,5 +30,9 @@ export class HomeComponent implements OnInit {
 
   onFilterApplied(filteredInvoices: Invoice[]) {
     this.filteredInvoices$ = of(filteredInvoices);
+  }
+
+  goToInvoiceDetails(id: string): void {
+    this.router.navigate(['/invoice', id]);
   }
 }

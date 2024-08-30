@@ -4,7 +4,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +18,7 @@ import { invoiceReducer } from './store/reducers/invoice.reducer';
 import { InvoiceEffects } from './store/effects/invoice.effects';
 import { CapitalizePipe } from './Pipes/capitalize.pipe';
 import { NewInvoiceComponent } from './components/new-invoice/new-invoice.component';
+import { InvoiceDetailsComponent } from './components/invoice-details/invoice-details.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +28,14 @@ import { NewInvoiceComponent } from './components/new-invoice/new-invoice.compon
     CreateInvoiceComponent,
     CapitalizePipe,
     NewInvoiceComponent,
+    InvoiceDetailsComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({
       theme: themeReducer,
       invoices: invoiceReducer,

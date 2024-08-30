@@ -74,7 +74,7 @@ input[type="checkbox"].hidden:checked + .checkbox-custom::after {
   scrollbar-width: none;
   -ms-overflow-style: none;
   transform: translateX(-100%);
-  animation: slideIn 3s forwards;
+  animation: slideIn 0.5s forwards;
 }
 
 .modal-content::-webkit-scrollbar {
@@ -88,7 +88,7 @@ input[type="checkbox"].hidden:checked + .checkbox-custom::after {
   scrollbar-width: none;
   -ms-overflow-style: none;
   transform: translateX(-100%);
-  animation: slideInSmall 3s forwards;
+  animation: slideInSmall 0.5s forwards;
 }
 
 .modal-content::-webkit-scrollbar {
@@ -121,7 +121,7 @@ input[type="checkbox"].hidden:checked + .checkbox-custom::after {
   }
 
   .modal-content {
-    animation: slideInLarge 3s forwards;
+    animation: slideInLarge 0.5s forwards;
   }
 }
 

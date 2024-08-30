@@ -1,89 +1,167 @@
-<div class="invoice-form">
+<div class="invoice-form" [formGroup]="invoiceForm">
   <h2 class="text-black text-3xl py-5 font-semibold new-title">New Invoice</h2>
 
   <div class="section">
     <h3 class="section-title">Bill From</h3>
     <div class="form-group">
       <label for="streetAddress">Street Address</label>
-      <input type="text" id="streetAddress" />
+      <input type="text" id="streetAddress" formControlName="streetAddress"
+        [ngClass]="{'is-invalid': invoiceForm.get('streetAddress')?.touched && invoiceForm.get('streetAddress')?.invalid}" />
+      <div
+        *ngIf="invoiceForm.get('streetAddress')?.touched && invoiceForm.get('streetAddress')?.invalid"
+        class="error">
+        Street Address is required.
+      </div>
     </div>
     <div class="form-row">
       <div class="form-group">
         <label for="city">City</label>
-        <input type="text" id="city" />
+        <input type="text" id="city" formControlName="city"
+          [ngClass]="{'is-invalid': invoiceForm.get('city')?.touched && invoiceForm.get('city')?.invalid}" />
+        <div
+          *ngIf="invoiceForm.get('city')?.touched && invoiceForm.get('city')?.invalid"
+          class="error">
+          City is required.
+        </div>
       </div>
       <div class="form-group">
         <label for="postCode">Post Code</label>
-        <input type="text" id="postCode" />
+        <input type="text" id="postCode" formControlName="postCode" />
+        <div
+          *ngIf="invoiceForm.get('postCode')?.touched && invoiceForm.get('postCode')?.invalid"
+          class="error">
+          Post Code is required.
+        </div>
       </div>
       <div class="form-group">
         <label for="country">Country</label>
-        <input type="text" id="country" class="country" />
+        <input type="text" id="country" formControlName="country" />
+        <div
+          *ngIf="invoiceForm.get('country')?.touched && invoiceForm.get('country')?.invalid"
+          class="error">
+          Country is required.
+        </div>
       </div>
     </div>
   </div>
+
   <div class="section">
     <h3 class="section-title">Bill To</h3>
     <div class="form-group">
       <label for="clientName">Client's Name</label>
-      <input type="text" id="clientName" />
+      <input type="text" id="clientName" formControlName="clientName" />
+      <div
+        *ngIf="invoiceForm.get('clientName')?.touched && invoiceForm.get('clientName')?.invalid"
+        class="error">
+        Client's Name is required.
+      </div>
     </div>
     <div class="form-group">
       <label for="clientEmail">Client's Email</label>
-      <input type="email" id="clientEmail" class="input" />
+      <input type="email" id="clientEmail" formControlName="clientEmail" />
+      <div
+        *ngIf="invoiceForm.get('clientEmail')?.touched && invoiceForm.get('clientEmail')?.invalid"
+        class="error">
+        A valid email is required.
+      </div>
     </div>
     <div class="form-group">
       <label for="clientStreetAddress">Street Address</label>
-      <input type="text" id="clientStreetAddress" />
+      <input type="text" id="clientStreetAddress"
+        formControlName="clientStreetAddress" />
+      <div
+        *ngIf="invoiceForm.get('clientStreetAddress')?.touched && invoiceForm.get('clientStreetAddress')?.invalid"
+        class="error">
+        Street Address is required.
+      </div>
     </div>
     <div class="form-row">
       <div class="form-group">
         <label for="clientCity">City</label>
-        <input type="text" id="clientCity" />
+        <input type="text" id="clientCity" formControlName="clientCity" />
+        <div
+          *ngIf="invoiceForm.get('clientCity')?.touched && invoiceForm.get('clientCity')?.invalid"
+          class="error">
+          City is required.
+        </div>
       </div>
       <div class="form-group">
         <label for="clientPostCode">Post Code</label>
-        <input type="text" id="clientPostCode" />
+        <input type="text" id="clientPostCode"
+          formControlName="clientPostCode" />
+        <div
+          *ngIf="invoiceForm.get('clientPostCode')?.touched && invoiceForm.get('clientPostCode')?.invalid"
+          class="error">
+          Post Code is required.
+        </div>
       </div>
       <div class="form-group">
         <label for="clientCountry">Country</label>
-        <input type="text" id="clientCountry" />
+        <input type="text" id="clientCountry" formControlName="clientCountry" />
+        <div
+          *ngIf="invoiceForm.get('clientCountry')?.touched && invoiceForm.get('clientCountry')?.invalid"
+          class="error">
+          Country is required.
+        </div>
       </div>
     </div>
   </div>
+
   <div class="section">
     <div class="form-row">
       <div class="form-group">
         <label for="invoiceDate">Invoice Date</label>
-        <input type="date" id="invoiceDate" />
+        <input type="date" id="invoiceDate" formControlName="invoiceDate" />
+        <div
+          *ngIf="invoiceForm.get('invoiceDate')?.touched && invoiceForm.get('invoiceDate')?.invalid"
+          class="error">
+          Invoice Date is required.
+        </div>
       </div>
       <div class="form-group">
         <label for="paymentTerms">Payment Terms</label>
-        <select id="paymentTerms">
-          <option>Net 1 Day</option>
-          <option>Net 7 Days</option>
-          <option>Net 14 Days</option>
-          <option>Net 30 Days</option>
+        <select id="paymentTerms" formControlName="paymentTerms">
+          <option value>Select Payment Terms</option>
+          <option value="Net 1 Day">Net 1 Day</option>
+          <option value="Net 7 Days">Net 7 Days</option>
+          <option value="Net 14 Days">Net 14 Days</option>
+          <option value="Net 30 Days">Net 30 Days</option>
         </select>
+        <div
+          *ngIf="invoiceForm.get('paymentTerms')?.touched && invoiceForm.get('paymentTerms')?.invalid"
+          class="error">
+          Payment Terms are required.
+        </div>
       </div>
     </div>
     <div class="form-group">
       <label for="projectDescription">Project Description</label>
-      <input type="text" id="projectDescription" />
+      <input type="text" id="projectDescription"
+        formControlName="projectDescription" />
+      <div
+        *ngIf="invoiceForm.get('projectDescription')?.touched && invoiceForm.get('projectDescription')?.invalid"
+        class="error">
+        Project Description is required.
+      </div>
     </div>
   </div>
 
   <div class="section">
     <h3 class="section-title">Item List</h3>
     <div class="item-list">
+      <!-- Dynamic Item List Content Here -->
     </div>
   </div>
+
   <button (click)="addItem()" class="add-item-btn">+ Add New Item</button>
+
   <div class="buttons">
-    <button class="btn btn-secondary">Discard</button>
+    <button class="btn btn-secondary" (click)="discard()">Discard</button>
     <div class="gap-2 flex">
-      <button class="btn btn-primary">Save as Draft</button>
-      <button class="btn btn-primary-save">Save & Send</button>
+      <button class="btn btn-primary" (click)="saveAsDraft()">Save as
+        Draft</button>
+      <button class="btn btn-primary-save" (click)="saveAndSend()">Save &
+        Send</button>
     </div>
   </div>
 </div>

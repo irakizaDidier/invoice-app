@@ -82,3 +82,11 @@
   background-color: #7c5dfa;
   color: #fff;
 }
+.error {
+  color: red;
+  font-size: 0.8em;
+  margin-top: 5px;
+}
+.is-invalid {
+  border-color: red;
+}
