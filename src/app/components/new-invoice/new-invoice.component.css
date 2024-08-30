@@ -90,3 +90,61 @@
 .is-invalid {
   border-color: red;
 }
+
+.item-field input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #dfe3fa;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.item-name input {
+  font-weight: 600;
+}
+
+.item-qty input,
+.item-price input,
+.item-total input {
+  text-align: center;
+}
+
+.item-total input {
+  background-color: #f9fafe;
+  border: none;
+  font-weight: 600;
+  color: #888eb0;
+}
+
+.item-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr auto;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.item-field input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #dfe3fa;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.item-name input {
+  font-weight: 600;
+}
+
+.item-qty input,
+.item-price input,
+.item-total input {
+  text-align: center;
+}
+
+.item-total input {
+  background-color: #f9fafe;
+  border: none;
+  font-weight: 600;
+  color: #888eb0;
+}

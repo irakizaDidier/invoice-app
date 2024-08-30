@@ -111,9 +111,9 @@
     <div class="form-row">
       <div class="form-group">
         <label for="invoiceDate">Invoice Date</label>
-        <input type="date" id="invoiceDate" formControlName="invoiceDate" />
+        <input type="date" id="invoiceDate" formControlName="paymentDue" />
         <div
-          *ngIf="invoiceForm.get('invoiceDate')?.touched && invoiceForm.get('invoiceDate')?.invalid"
+          *ngIf="invoiceForm.get('paymentDue')?.touched && invoiceForm.get('paymentDue')?.invalid"
           class="error">
           Invoice Date is required.
         </div>
@@ -137,9 +137,9 @@
     <div class="form-group">
       <label for="projectDescription">Project Description</label>
       <input type="text" id="projectDescription"
-        formControlName="projectDescription" />
+        formControlName="description" />
       <div
-        *ngIf="invoiceForm.get('projectDescription')?.touched && invoiceForm.get('projectDescription')?.invalid"
+        *ngIf="invoiceForm.get('description')?.touched && invoiceForm.get('description')?.invalid"
         class="error">
         Project Description is required.
       </div>
@@ -148,8 +148,27 @@
 
   <div class="section">
     <h3 class="section-title">Item List</h3>
-    <div class="item-list">
-      <!-- Dynamic Item List Content Here -->
+    <div formArrayName="items" class="item-list" *ngIf="showNewItemFields">
+      <div *ngFor="let item of items().controls; let i = index"
+        [formGroupName]="i" class="item-row">
+        <div class="item-field item-name">
+          <input type="text" formControlName="name" placeholder="Item Name" />
+        </div>
+        <div class="item-field item-qty">
+          <input type="number" formControlName="quantity" placeholder="Qty."
+            (input)="updateTotal(i)" />
+        </div>
+        <div class="item-field item-price">
+          <input type="number" formControlName="price" placeholder="Price"
+            (input)="updateTotal(i)" />
+        </div>
+        <div class="item-field item-total">
+          <input type="text" formControlName="total" placeholder="Total"
+            readonly />
+        </div>
+        <button type="button" class="remove-item-btn"
+          (click)="removeItem(i)">🗑️</button>
+      </div>
     </div>
   </div>
 
