@@ -1,28 +1,33 @@
-<div *ngIf="invoice$ | async as invoice" class="p-8  min-h-screen">
-
+<div *ngIf="invoice$ | async as invoice" class="p-8 min-h-screen">
   <div class="max-w-3xl mx-auto mb-6">
     <a routerLink="/" class="text-purple-600 font-semibold">&lt; Go back</a>
   </div>
 
-  <div class="max-w-3xl mx-auto bg-white shadow-sm rounded-sm mb-6">
-    <div class="flex justify-between items-center p-4  rounded-lg">
-      <div class="flex gap-3"><span class="flex items-center">Status </span>
+  <div class="max-w-3xl mx-auto bg-white shadow-sm rounded-sm mb-6"
+    *ngIf="!invoice.deleted">
+    <div class="flex justify-between items-center p-4 rounded-lg">
+      <div class="flex gap-3">
+        <span class="flex items-center">Status </span>
         <span [ngClass]="{
             'status-paid': invoice.status === 'paid',
             'status-pending': invoice.status === 'pending',
             'status-draft': invoice.status === 'draft'
-          }">{{invoice.status | capitalize}}</span>
+          }">{{ invoice.status | capitalize }}</span>
       </div>
       <div class="flex items-center space-x-4">
         <button class="btn-edit">Edit</button>
-        <button class="btn-delete">Delete</button>
+        <button class="btn-delete" (click)="openDeleteModal()">Delete</button>
         <button class="btn-paid">Mark as Paid</button>
       </div>
     </div>
   </div>
 
-  <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg">
+  <div *ngIf="invoice.deleted" class="max-w-3xl mx-auto mb-6 text-red-600">
+    This invoice has been marked as deleted.
+  </div>
 
+  <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg"
+    *ngIf="!invoice.deleted">
     <div class="p-8">
       <h2 class="text-2xl font-bold">#{{ invoice.id }}</h2>
       <p class="text-gray-500 mb-8">{{ invoice.description }}</p>
@@ -42,38 +47,56 @@
           <p class="text-gray-500">Bill To</p>
           <p class="font-semibold">{{ invoice.clientName }}</p>
           <p class="text-gray-500">{{ invoice.clientAddress.street }}</p>
-          <p class="text-gray-500">{{ invoice.clientAddress.city }}, {{
-            invoice.clientAddress.postCode }}</p>
+          <p class="text-gray-500">{{ invoice.clientAddress.city }}</p>
+          <p class="text-gray-500">{{ invoice.clientAddress.postCode }}</p>
           <p class="text-gray-500">{{ invoice.clientAddress.country }}</p>
         </div>
         <div>
-          <p class="text-gray-500">Sent to</p>
+          <p class="text-gray-500">Sent To</p>
           <p class="font-semibold">{{ invoice.clientEmail }}</p>
         </div>
       </div>
 
-      <div class="mt-8 bg-gray-100 p-4 rounded-lg">
-        <div class="grid grid-cols-4 text-gray-500 mb-4">
-          <div>Item Name</div>
-          <div class="text-center">QTY.</div>
-          <div class="text-center">Price</div>
-          <div class="text-right">Total</div>
-        </div>
 
-        <div *ngFor="let item of invoice.items"
-          class="grid grid-cols-4 items-center mb-4">
-          <p>{{ item.name }}</p>
-          <p class="text-center">{{ item.quantity }}</p>
-          <p class="text-center">{{ item.price | currency:'GBP' }}</p>
-          <p class="text-right">{{ item.total | currency:'GBP' }}</p>
-        </div>
-
-        <div
-          class="mt-8 flex justify-between items-center p-4 bg-gray-700 text-white rounded-lg">
-          <p>Amount Due</p>
-          <p class="text-2xl font-bold">{{ invoice.total | currency:'GBP' }}</p>
-        </div>
+      <div class="mt-8">
+        <table class="min-w-full leading-normal">
+          <thead>
+            <tr>
+              <th>Item Name</th>
+              <th>QTY.</th>
+              <th>Price</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of invoice.items">
+              <td>{{ item.name }}</td>
+              <td>{{ item.quantity }}</td>
+              <td>{{ item.price | currency }}</td>
+              <td>{{ item.total | currency }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+
+      <div class="flex justify-between items-center mt-8">
+        <span class="text-gray-500">Total Amount</span>
+        <span class="text-xl font-bold">{{ invoice.total | currency }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showDeleteModal"
+  class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+  <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+    <h2 class="text-xl font-bold mb-4">Confirm Deletion</h2>
+    <p class="mb-6">Are you sure you want to delete invoice #{{ (invoice$ |
+      async)?.id }}? This action cannot be undone.</p>
+    <div class="flex justify-end space-x-4">
+      <button class="btn-cancel" (click)="closeDeleteModal()">Cancel</button>
+      <button class="btn-delete-confirm"
+        (click)="deleteInvoice()">Delete</button>
     </div>
   </div>
 </div>

@@ -11,6 +11,9 @@ import {
   saveInvoice,
   saveInvoiceSuccess,
   saveInvoiceFailure,
+  deleteInvoice,
+  deleteInvoiceSuccess,
+  deleteInvoiceFailure,
 } from '../actions/invoice.actions';
 import { Invoice } from '../../models/invoice.model';
 
@@ -25,6 +28,7 @@ export class InvoiceEffects {
   ) {
     this.subscription = this.handleLoadInvoices();
     this.subscription.add(this.handleSaveInvoice());
+    this.subscription.add(this.handleDeleteInvoice());
   }
 
   private handleLoadInvoices(): Subscription {
@@ -75,6 +79,33 @@ export class InvoiceEffects {
           return saveInvoiceSuccess({ invoice });
         }),
         catchError((error) => of(saveInvoiceFailure({ error: error.message })))
+      )
+      .subscribe((action) => this.store.dispatch(action));
+  }
+
+  private handleDeleteInvoice(): Subscription {
+    return this.actions$
+      .pipe(
+        ofType(deleteInvoice),
+        map((action) => {
+          const id = (action as any).id as string;
+          let invoices: Invoice[] = [];
+
+          const storedInvoices = localStorage.getItem('invoices');
+          if (storedInvoices) {
+            invoices = JSON.parse(storedInvoices);
+          }
+
+          invoices = invoices.map((invoice) =>
+            invoice.id === id ? { ...invoice, deleted: true } : invoice
+          );
+          localStorage.setItem('invoices', JSON.stringify(invoices));
+
+          return deleteInvoiceSuccess({ id });
+        }),
+        catchError((error) =>
+          of(deleteInvoiceFailure({ error: error.message }))
+        )
       )
       .subscribe((action) => this.store.dispatch(action));
   }

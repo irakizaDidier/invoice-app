@@ -11,6 +11,7 @@ export interface Invoice {
   clientAddress: Address;
   items: Item[];
   total: number;
+  deleted?: boolean;
 }
 
 export interface Address {
