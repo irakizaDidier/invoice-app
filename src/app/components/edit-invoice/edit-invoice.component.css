@@ -1,15 +1,71 @@
 .input {
-  @apply w-full px-4 py-2 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  color: #4b5563;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input:focus {
+  border-color: #7c5dfa;
+  box-shadow: 0 0 0 1px #7c5dfa;
 }
 
 .btn-cancel {
-  @apply px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-md hover:bg-gray-300;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 50px;
+  background-color: #252945;
+  color: white;
 }
 
 .btn-save {
-  @apply px-4 py-2 bg-purple-700 text-white font-semibold rounded-md hover:bg-purple-800;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 50px;
+  background-color: #7c5dfa;
+  color: white;
 }
 
 .top {
-  @apply w-full;
+  width: 100%;
+}
+
+.edit-model {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+h3 {
+  font-size: 14px;
+  color: #7c5dfa;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
+@media (max-width: 768px) {
+  .grid-cols-2,
+  .grid-cols-4 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .col-span-2 {
+    grid-column: span 1 / span 1;
+  }
 }

@@ -12,7 +12,7 @@ import { updateInvoice } from '../../store/actions/invoice.actions';
 })
 export class EditInvoiceComponent implements OnInit {
   @Input() invoice: Invoice | null = null;
-  @Input() closeModal!: () => void; 
+  @Input() closeModal!: () => void;
   @Output() invoiceUpdated = new EventEmitter<Invoice>();
   invoiceForm: FormGroup;
   modalOpen: boolean = false;

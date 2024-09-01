@@ -17,7 +17,7 @@ export class NewInvoiceComponent {
     this.invoiceForm = this.fb.group({
       id: [this.generateUniqueId()],
       status: [''],
-      streetAddress: ['', Validators.required],
+      street: ['', Validators.required],
       city: ['', Validators.required],
       postCode: ['', Validators.required],
       country: ['', Validators.required],

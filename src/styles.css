@@ -119,3 +119,32 @@ body.dark-mode .add-item-btn {
 body.dark-mode .new-title {
   color: #fff;
 }
+body.dark-mode .top-buttons {
+  background-color: #1e2139;
+}
+body.dark-mode .buttom-section {
+  background-color: #1e2139;
+}
+body.dark-mode .invoice-money {
+  background-color: #252945;
+}
+body.dark-mode .buttom-amout {
+  background-color: #0c0e16;
+}
+body.dark-mode .text-color {
+  color: #dfe3fa;
+}
+body.dark-mode .delete-model {
+  background-color: #1e2139;
+}
+body.dark-mode .edit-model {
+  background-color: #141625;
+}
+body.dark-mode .input {
+  background-color: #1e2139;
+  color: #fff;
+  border: none;
+}
+body.dark-mode .block {
+  color: #dfe3fa;
+}

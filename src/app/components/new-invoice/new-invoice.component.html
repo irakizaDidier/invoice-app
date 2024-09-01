@@ -5,10 +5,10 @@
     <h3 class="section-title">Bill From</h3>
     <div class="form-group">
       <label for="streetAddress">Street Address</label>
-      <input type="text" id="streetAddress" formControlName="streetAddress"
-        [ngClass]="{'is-invalid': invoiceForm.get('streetAddress')?.touched && invoiceForm.get('streetAddress')?.invalid}" />
+      <input type="text" id="streetAddress" formControlName="street"
+        [ngClass]="{'is-invalid': invoiceForm.get('street')?.touched && invoiceForm.get('street')?.invalid}" />
       <div
-        *ngIf="invoiceForm.get('streetAddress')?.touched && invoiceForm.get('streetAddress')?.invalid"
+        *ngIf="invoiceForm.get('street')?.touched && invoiceForm.get('street')?.invalid"
         class="error">
         Street Address is required.
       </div>
