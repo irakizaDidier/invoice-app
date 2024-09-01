@@ -36,3 +36,18 @@ export const deleteInvoiceFailure = createAction(
   '[Invoice] Delete Invoice Failure',
   props<{ error: string }>()
 );
+
+export const updateInvoice = createAction(
+  '[Invoice] Update Invoice',
+  props<{ invoice: Invoice }>()
+);
+
+export const updateInvoiceSuccess = createAction(
+  '[Invoice] Update Invoice Success',
+  props<{ invoice: Invoice }>()
+);
+
+export const updateInvoiceFailure = createAction(
+  '[Invoice] Update Invoice Failure',
+  props<{ error: string }>()
+);

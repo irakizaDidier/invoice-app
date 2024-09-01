@@ -4,7 +4,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { Invoice } from '../../models/invoice.model';
-import { deleteInvoice } from '../../store/actions/invoice.actions';
+import {
+  deleteInvoice,
+  updateInvoice,
+} from '../../store/actions/invoice.actions';
 import { selectInvoiceById } from '../../store/selectors/invoice.selectors';
 
 @Component({
@@ -13,8 +16,9 @@ import { selectInvoiceById } from '../../store/selectors/invoice.selectors';
   styleUrls: ['./invoice-details.component.css'],
 })
 export class InvoiceDetailsComponent implements OnInit {
-  invoice$: Observable<Invoice | undefined>;
+  invoice$: Observable<Invoice | null>;
   showDeleteModal: boolean = false;
+  showEditModal: boolean = false;
 
   constructor(
     private store: Store,
@@ -23,9 +27,11 @@ export class InvoiceDetailsComponent implements OnInit {
   ) {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.invoice$ = this.store.select(selectInvoiceById(id));
+      this.invoice$ = this.store
+        .select(selectInvoiceById(id))
+        .pipe(map((invoice) => invoice || null));
     } else {
-      this.invoice$ = of(undefined);
+      this.invoice$ = of(null);
       console.error('Invalid invoice ID');
     }
   }
@@ -55,5 +61,29 @@ export class InvoiceDetailsComponent implements OnInit {
         })
       )
       .subscribe();
+  }
+
+  openEditModal(): void {
+    this.showEditModal = true;
+  }
+
+  closeEditModal(): void {
+    this.showEditModal = false;
+  }
+
+  onInvoiceUpdated(updatedInvoice: Invoice): void {
+    this.store.dispatch(updateInvoice({ invoice: updatedInvoice }));
+    this.closeEditModal();
+  }
+
+  markAsPaid(): void {
+    this.invoice$.pipe(take(1)).subscribe((invoice) => {
+      if (invoice) {
+        const updatedInvoice: Invoice = { ...invoice, status: 'Paid' };
+        this.store.dispatch(updateInvoice({ invoice: updatedInvoice }));
+      } else {
+        console.error('Invoice is undefined or missing.');
+      }
+    });
   }
 }

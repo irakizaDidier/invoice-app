@@ -19,6 +19,7 @@ import { InvoiceEffects } from './store/effects/invoice.effects';
 import { CapitalizePipe } from './Pipes/capitalize.pipe';
 import { NewInvoiceComponent } from './components/new-invoice/new-invoice.component';
 import { InvoiceDetailsComponent } from './components/invoice-details/invoice-details.component';
+import { EditInvoiceComponent } from './components/edit-invoice/edit-invoice.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { InvoiceDetailsComponent } from './components/invoice-details/invoice-de
     CapitalizePipe,
     NewInvoiceComponent,
     InvoiceDetailsComponent,
+    EditInvoiceComponent,
   ],
   imports: [
     BrowserModule,

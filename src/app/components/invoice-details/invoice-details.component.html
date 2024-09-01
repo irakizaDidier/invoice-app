@@ -15,9 +15,15 @@
           }">{{ invoice.status | capitalize }}</span>
       </div>
       <div class="flex items-center space-x-4">
-        <button class="btn-edit">Edit</button>
+        <button class="btn-edit" (click)="openEditModal()">Edit</button>
         <button class="btn-delete" (click)="openDeleteModal()">Delete</button>
-        <button class="btn-paid">Mark as Paid</button>
+        <!-- <button class="btn-paid">Mark as Paid</button> -->
+        <button
+          *ngIf="invoice.status.toLowerCase() !== 'paid'"
+          (click)="markAsPaid()"
+          class="btn-paid">
+          Mark as Paid
+        </button>
       </div>
     </div>
   </div>
@@ -57,33 +63,51 @@
         </div>
       </div>
 
+      <section class="py-6 ">
+        <div class="rounded-t-xl invoice-money">
+          <table class="min-w-full leading-normal">
+            <thead class="my-6">
+              <tr>
+                <th class="text-start">Item Name</th>
+                <th class="text-center">QTY.</th>
+                <th class="text-end">Price</th>
+                <th class="text-end">Total</th>
+              </tr>
+            </thead>
+            <tbody class="my-6">
+              <tr *ngFor="let item of invoice.items">
+                <td>{{ item.name }}</td>
+                <td class="text-center">{{ item.quantity }}</td>
+                <td class="text-end">{{ item.price | currency }}</td>
+                <td class="text-end">{{ item.total | currency }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-      <div class="mt-8">
-        <table class="min-w-full leading-normal">
-          <thead>
-            <tr>
-              <th>Item Name</th>
-              <th>QTY.</th>
-              <th>Price</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of invoice.items">
-              <td>{{ item.name }}</td>
-              <td>{{ item.quantity }}</td>
-              <td>{{ item.price | currency }}</td>
-              <td>{{ item.total | currency }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <div
+          class="flex justify-between items-center py-6 px-3 buttom-amout rounded-b-xl">
+          <span class="text-gray-500">Amount Due</span>
+          <span class="text-xl font-bold">{{ invoice.total | currency }}</span>
+        </div>
+      </section>
 
-      <div class="flex justify-between items-center mt-8">
-        <span class="text-gray-500">Total Amount</span>
-        <span class="text-xl font-bold">{{ invoice.total | currency }}</span>
+    </div>
+
+    <div class="modal-overlay" *ngIf="showEditModal" (click)="closeEditModal()">
+      <div
+        class="modal-content w-full sm:w-full md:w-3/4  bg-white lg:w-1/3"
+        (click)="$event.stopPropagation()">
+        <app-edit-invoice
+          [invoice]="invoice$ | async"
+          [closeModal]="closeEditModal.bind(this)"
+          (invoiceUpdated)="onInvoiceUpdated($event)">
+        </app-edit-invoice>
+        <button class="close-modal lg:hidden md:hidden sm:visible"
+          (click)="closeEditModal()">X</button>
       </div>
     </div>
+
   </div>
 </div>
 
@@ -100,3 +124,15 @@
     </div>
   </div>
 </div>
+
+<!-- <div class="modal-overlay" *ngIf="showEditModal" (click)="closeEditModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <app-edit-invoice
+      [invoice]="invoice$ | async"
+      [closeModal]="closeEditModal.bind(this)"
+      (invoiceUpdated)="onInvoiceUpdated($event)">
+    </app-edit-invoice>
+    <button class="close-modal lg:hidden md:hidden sm:visible"
+      (click)="closeEditModal()">X</button>
+  </div>
+</div> -->

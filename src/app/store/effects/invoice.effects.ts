@@ -11,6 +11,9 @@ import {
   saveInvoice,
   saveInvoiceSuccess,
   saveInvoiceFailure,
+  updateInvoice,
+  updateInvoiceSuccess,
+  updateInvoiceFailure,
   deleteInvoice,
   deleteInvoiceSuccess,
   deleteInvoiceFailure,
@@ -28,6 +31,7 @@ export class InvoiceEffects {
   ) {
     this.subscription = this.handleLoadInvoices();
     this.subscription.add(this.handleSaveInvoice());
+    this.subscription.add(this.handleUpdateInvoice());
     this.subscription.add(this.handleDeleteInvoice());
   }
 
@@ -79,6 +83,33 @@ export class InvoiceEffects {
           return saveInvoiceSuccess({ invoice });
         }),
         catchError((error) => of(saveInvoiceFailure({ error: error.message })))
+      )
+      .subscribe((action) => this.store.dispatch(action));
+  }
+
+  private handleUpdateInvoice(): Subscription {
+    return this.actions$
+      .pipe(
+        ofType(updateInvoice),
+        map((action) => {
+          const invoice = (action as any).invoice as Invoice;
+          let invoices: Invoice[] = [];
+
+          const storedInvoices = localStorage.getItem('invoices');
+          if (storedInvoices) {
+            invoices = JSON.parse(storedInvoices);
+          }
+
+          invoices = invoices.map((inv) =>
+            inv.id === invoice.id ? { ...invoice } : inv
+          );
+          localStorage.setItem('invoices', JSON.stringify(invoices));
+
+          return updateInvoiceSuccess({ invoice });
+        }),
+        catchError((error) =>
+          of(updateInvoiceFailure({ error: error.message }))
+        )
       )
       .subscribe((action) => this.store.dispatch(action));
   }

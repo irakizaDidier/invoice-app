@@ -6,6 +6,8 @@ import {
   saveInvoice,
   saveInvoiceSuccess,
   saveInvoiceFailure,
+  updateInvoiceSuccess,
+  updateInvoiceFailure,
   deleteInvoiceSuccess,
   deleteInvoiceFailure,
 } from '../actions/invoice.actions';
@@ -35,6 +37,13 @@ export const invoiceReducer = createReducer(
     invoices: [...state.invoices, invoice],
   })),
   on(saveInvoiceFailure, (state, { error }) => ({ ...state, error })),
+  on(updateInvoiceSuccess, (state, { invoice }) => ({
+    ...state,
+    invoices: state.invoices.map((inv) =>
+      inv.id === invoice.id ? { ...invoice } : inv
+    ),
+  })),
+  on(updateInvoiceFailure, (state, { error }) => ({ ...state, error })),
   on(deleteInvoiceSuccess, (state, { id }) => ({
     ...state,
     invoices: state.invoices.map((invoice) =>

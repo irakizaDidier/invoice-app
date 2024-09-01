@@ -1,0 +1,15 @@
+.input {
+  @apply w-full px-4 py-2 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500;
+}
+
+.btn-cancel {
+  @apply px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-md hover:bg-gray-300;
+}
+
+.btn-save {
+  @apply px-4 py-2 bg-purple-700 text-white font-semibold rounded-md hover:bg-purple-800;
+}
+
+.top {
+  @apply w-full;
+}
