@@ -8,23 +8,15 @@
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.input:focus {
-  border-color: #7c5dfa;
-  box-shadow: 0 0 0 1px #7c5dfa;
-}
-
 .btn-cancel {
-  padding: 10px 20px;
-  font-weight: bold;
-  border-radius: 50px;
+  @apply font-semibold py-2 px-4 text-sm rounded-xl;
   background-color: #252945;
-  color: white;
+  background-color: #f9fafe;
+  color: #7e88c3;
 }
 
 .btn-save {
-  padding: 10px 20px;
-  font-weight: bold;
-  border-radius: 50px;
+  @apply font-semibold py-2 px-4 text-sm rounded-xl;
   background-color: #7c5dfa;
   color: white;
 }
@@ -42,7 +34,10 @@ h3 {
   font-size: 14px;
   color: #7c5dfa;
 }
-
+.label-edit {
+  color: #7e88c3;
+  @apply text-sm;
+}
 .grid {
   display: grid;
   gap: 1rem;
@@ -68,4 +63,17 @@ h3 {
   .col-span-2 {
     grid-column: span 1 / span 1;
   }
+}
+
+.btn-add {
+  @apply font-semibold py-2 px-4 text-sm rounded-xl;
+  background-color: #e0e7ff;
+  color: #3b82f6;
+}
+
+.btn-delete {
+  @apply text-red-500;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }

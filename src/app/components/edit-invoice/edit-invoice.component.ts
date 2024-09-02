@@ -1,6 +1,5 @@
-// edit-invoice.component.ts
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Invoice } from '../../models/invoice.model';
 import { updateInvoice } from '../../store/actions/invoice.actions';
@@ -21,6 +20,7 @@ export class EditInvoiceComponent implements OnInit {
     this.invoiceForm = this.fb.group({
       clientName: ['', Validators.required],
       clientEmail: ['', [Validators.required, Validators.email]],
+      description: ['', Validators.required],
       senderAddress: this.fb.group({
         street: ['', Validators.required],
         city: ['', Validators.required],
@@ -33,20 +33,51 @@ export class EditInvoiceComponent implements OnInit {
         postCode: ['', Validators.required],
         country: ['', Validators.required],
       }),
+      items: this.fb.array([]), 
     });
   }
 
   ngOnInit(): void {
     if (this.invoice) {
       this.invoiceForm.patchValue(this.invoice);
+      this.setItems(this.invoice.items);
     }
     this.openModal();
   }
 
+  get items(): FormArray {
+    return this.invoiceForm.get('items') as FormArray;
+  }
+
+  setItems(items: any[]): void {
+    const itemFGs = items.map((item) =>
+      this.fb.group({
+        name: [item.name, Validators.required],
+        quantity: [item.quantity, [Validators.required, Validators.min(1)]],
+        price: [item.price, [Validators.required, Validators.min(0)]],
+      })
+    );
+    const itemFormArray = this.fb.array(itemFGs);
+    this.invoiceForm.setControl('items', itemFormArray);
+  }
   openModal(): void {
     setTimeout(() => {
       this.modalOpen = true;
     }, 100);
+  }
+
+  addItem(): void {
+    this.items.push(
+      this.fb.group({
+        name: ['', Validators.required],
+        quantity: [1, [Validators.required, Validators.min(1)]],
+        price: [0, [Validators.required, Validators.min(0)]],
+      })
+    );
+  }
+
+  removeItem(index: number): void {
+    this.items.removeAt(index);
   }
 
   onClose(): void {

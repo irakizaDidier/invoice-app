@@ -148,3 +148,7 @@ body.dark-mode .input {
 body.dark-mode .block {
   color: #dfe3fa;
 }
+body.dark-mode .btn-cancel {
+  background-color: #252945;
+  color: white;
+}
