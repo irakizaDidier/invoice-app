@@ -33,7 +33,7 @@ export class EditInvoiceComponent implements OnInit {
         postCode: ['', Validators.required],
         country: ['', Validators.required],
       }),
-      items: this.fb.array([]), 
+      items: this.fb.array([]),
     });
   }
 
